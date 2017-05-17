@@ -1,10 +1,10 @@
 package main
 
 import (
-	"reflect"
 	"encoding/json"
 	"fmt"
-	"github.com/jamesfgreene/json_merger/json_merger"
+	"github.com/jamesfgreene/merger/json_merger"
+	"github.com/jamesfgreene/json_merger/merger"
 )
 
 func main() {
@@ -30,7 +30,10 @@ func main() {
 	fmt.Println(updateJSONMap)
 	fmt.Println(string(updateJSONByteString)+"\n")
 
-	var mergedJSONMap = mergeJSONMaps(originalJSONMap, updateJSONMap)
+	jsonMerger := merger.NewMerger()
+
+
+	var mergedJSONMap = jsonMerger.MergeJSONMaps(originalJSONMap, updateJSONMap)
 	mergedJSONByteString, err := json.Marshal(mergedJSONMap)
 	if err != nil {
 		// do something here
@@ -39,18 +42,4 @@ func main() {
 	fmt.Println("Merged JSON map/string")
 	fmt.Println(mergedJSONMap)
 	fmt.Println(string(mergedJSONByteString))
-}
-
-
-
-func mergeJSONMaps(original, update map[string]interface{}) (interface{}) {
-	for key, value := range original {
-		if _, ok := update[key]; ok == false {
-			update[key] = value
-		} else if reflect.TypeOf(value).String() == "map[string]interface {}" {
-			mergeJSONMaps(value.(map[string]interface{}), update[key].(map[string]interface{}))
-		}
-	}
-
-	return update
 }

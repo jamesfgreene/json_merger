@@ -1,0 +1,6 @@
+{
+	"ImportPath": "github.com/jamesfgreene/json_merger",
+	"GoVersion": "go1.7",
+	"GodepVersion": "v75",
+	"Deps": []
+}
