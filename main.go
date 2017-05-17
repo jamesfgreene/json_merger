@@ -30,9 +30,7 @@ func main() {
 	fmt.Println(string(updateJSONByteString)+"\n")
 
 	jsonMerger := merger.NewMerger()
-
-
-	var mergedJSONMap = jsonMerger.MergeJSONMaps(originalJSONMap, updateJSONMap)
+	mergedJSONMap := jsonMerger.MergeJSONMaps(originalJSONMap, updateJSONMap)
 	mergedJSONByteString, err := json.Marshal(mergedJSONMap)
 	if err != nil {
 		// do something here
