@@ -3,7 +3,6 @@ package main
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/jamesfgreene/merger/json_merger"
 	"github.com/jamesfgreene/json_merger/merger"
 )
 
